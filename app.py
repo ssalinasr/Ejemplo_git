@@ -18,14 +18,33 @@ def resta(val_1, val_2):
     c = Calculadora()
     c.val1 = val_1
     c.val2 = val_2
-    c.suma()
+    c.resta()
 
 @app.route("/multiplicacion/<int:val_1>/<int:val_2>")
 def multiplicacion(val_1, val_2):
     c = Calculadora()
     c.val1 = val_1
     c.val2 = val_2
-    c.suma()
+    c.multiplicacion()
+
+@app.route("/operacion/<operador>/<int:val_1>/<int:val_2>")
+def operacion(operador,val_1,val_2):
+    c = Calculadora()
+    c.val1 = val_1
+    c.val2 = val_2
+    res = 0
+
+    if (operador == "+"):
+        res = c.suma()
+    elif (operador == "-"):
+        res = c.resta()
+    elif (operador == "*"):
+        res = c.multiplicacion()
+    else:
+    res = 0
+
+    return render_template('Archivo.html',resultado = res)
+
 
 if _name_ == '__main__':
     app.run(debug= True)

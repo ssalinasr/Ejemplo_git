@@ -6,7 +6,7 @@ app = Flask(_name_)
 def hola():
     return "Hola mundo"
 
-@app.route("/suma/<val_1>/<val_2>")
+@app.route("/suma/<int:val_1>/<int:val_2>")
 def suma(val_1, val_2):
     c = Calculadora()
     c.val1 = val_1
